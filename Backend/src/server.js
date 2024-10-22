@@ -9,15 +9,16 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 
-// Update CORS to allow the Vercel front-end and localhost for development
+// CORS configuration for localhost and Vercel
 app.use(cors({
     credentials: true,
     origin: ["http://localhost:3000", "https://your-vercel-app.vercel.app"]
 }));
 
-// Serve static files (optional)
+// Static files
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
+// API routes
 app.use("/api/foods", foodRouter);
 
 const PORT = process.env.PORT || 5000;
